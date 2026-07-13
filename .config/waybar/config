@@ -1,0 +1,82 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["hyprland/workspaces", "language"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["cpu", "memory", "disk", "temperature", "backlight", "battery", "pulseaudio", "network", "clock"],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "language": {
+        "format": "{name}",
+        "layouts": [
+            {"name": "us", "label": "US"},
+            {"name": "ru", "label": "RU"}
+        ]
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 2,
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": "RAM {}%",
+        "interval": 5,
+        "tooltip": true
+    },
+
+    "disk": {
+        "format": "{free} GB",
+        "interval": 30,
+        "path": "/",
+        "tooltip": true
+    },
+
+    "temperature": {
+        "format": "🌡️ {temperatureC}°C",
+        "interval": 5,
+        "critical-threshold": 75,
+        "tooltip": true
+    },
+
+    "backlight": {
+        "format": "☀️ {percent}%",
+        "interval": 2,
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "🔋 {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-full": "✅ {capacity}%",
+        "interval": 30,
+        "tooltip": true
+    },
+
+    "pulseaudio": {
+        "format": "🔊 {volume}%",
+        "format-muted": "🔇 MUTE",
+        "on-click": "pavucontrol",
+        "tooltip": true
+    },
+
+    "network": {
+        "format": "📶 {essid}",
+        "format-disconnected": "❌ Offline",
+        "tooltip-format": "{ifname} {ipaddr}",
+        "interval": 5
+    },
+
+    "clock": {
+        "format": "🕐 {:%H:%M}",
+        "interval": 60,
+        "tooltip": true
+    }
+}
