@@ -3,8 +3,8 @@
     "position": "top",
     "height": 30,
     "spacing": 4,
-    "modules-left": ["hyprland/workspaces", "language"],
-    "modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "custom/language"],
+    "modules-center": [],
     "modules-right": ["cpu", "memory", "disk", "temperature", "backlight", "battery", "pulseaudio", "network", "clock"],
 
     "hyprland/workspaces": {
@@ -12,12 +12,11 @@
         "on-click": "activate"
     },
 
-    "language": {
-        "format": "{name}",
-        "layouts": [
-            {"name": "us", "label": "US"},
-            {"name": "ru", "label": "RU"}
-        ]
+    "custom/language": {
+        "format": "{}",
+        "exec": "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | cut -c1-2 | tr 'a-z' 'A-Z'",
+        "interval": 1,
+        "tooltip": false
     },
 
     "cpu": {
