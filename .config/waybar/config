@@ -66,14 +66,14 @@
     },
 
     "battery": {
-        "format": "🔋 {capacity}%",
-        "format-charging": "⚡ {capacity}%",
-        "format-full": "✅ {capacity}%",
-        "on-click": "kitty -e bash -c 'echo -e \"1) performance\\n2) balanced\\n3) powersave\\n4) current\\nВыбери режим (1-4): \"; read choice; case $choice in 1) tuned-adm profile performance ;; 2) tuned-adm profile balanced ;; 3) tuned-adm profile powersave ;; 4) tuned-adm active ;; esac; echo -e \"\\nНажми Enter для выхода\"; read'",
-        "tooltip": true,
-        "tooltip-format": "ЛКМ: выбрать режим питания"
+    "format": "🔋 {capacity}%",
+    "format-charging": "⚡ {capacity}%",
+    "format-full": "✅ {capacity}%",
+    "on-click": "kitty -e bash -c 'echo -e \"1) performance (макс. производительность, больше тепла)\\n2) balanced (сбалансированный)\\n3) powersave (экономия батареи, медленнее)\\n4) current (показать текущий)\\nВыбери режим (1-4): \"; read choice; case $choice in 1) tuned-adm profile performance ;; 2) tuned-adm profile balanced ;; 3) tuned-adm profile powersave ;; 4) tuned-adm active ;; esac; echo -e \"\\nНажми Enter для выхода\"; read'",
+    "tooltip": true,
+    "tooltip-format": "🔋 ЛКМ: выбрать режим питания\n• performance — макс. мощность (игры/работа)\n• balanced — сбалансированный\n• powersave — экономия заряда"
     },
-
+    
     "pulseaudio": {
         "format": "🔊 {volume}%",
         "format-muted": "🔇 MUTE",
