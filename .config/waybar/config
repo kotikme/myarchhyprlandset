@@ -5,7 +5,7 @@
     "spacing": 4,
     "modules-left": ["hyprland/workspaces", "custom/language"],
     "modules-center": [],
-    "modules-right": ["cpu", "memory", "disk", "temperature", "backlight", "battery", "pulseaudio", "network", "clock"],
+    "modules-right": ["cpu", "memory", "disk", "temperature", "backlight", "battery", "pulseaudio", "custom/wifi", "network", "clock"],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -17,6 +17,20 @@
         "exec": "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | cut -c1-2 | tr 'a-z' 'A-Z'",
         "interval": 1,
         "tooltip": false
+    },
+
+    "custom/wifi": {
+        "format": "📶",
+        "on-click": "nm-connection-editor",
+        "tooltip": true,
+        "tooltip-format": "Нажми, чтобы открыть настройки Wi-Fi"
+    },
+
+    "network": {
+        "format": "{essid}",
+        "format-disconnected": "❌ Offline",
+        "tooltip-format": "{ifname} {ipaddr}",
+        "interval": 5
     },
 
     "cpu": {
@@ -55,8 +69,9 @@
         "format": "🔋 {capacity}%",
         "format-charging": "⚡ {capacity}%",
         "format-full": "✅ {capacity}%",
-        "interval": 30,
-        "tooltip": true
+        "on-click": "kitty -e bash -c 'echo -e \"1) performance\\n2) balanced\\n3) powersave\\n4) current\\nВыбери режим (1-4): \"; read choice; case $choice in 1) tuned-adm profile performance ;; 2) tuned-adm profile balanced ;; 3) tuned-adm profile powersave ;; 4) tuned-adm active ;; esac; echo -e \"\\nНажми Enter для выхода\"; read'",
+        "tooltip": true,
+        "tooltip-format": "ЛКМ: выбрать режим питания"
     },
 
     "pulseaudio": {
@@ -66,15 +81,8 @@
         "tooltip": true
     },
 
-    "network": {
-        "format": "📶 {essid}",
-        "format-disconnected": "❌ Offline",
-        "tooltip-format": "{ifname} {ipaddr}",
-        "interval": 5
-    },
-
     "clock": {
-        "format": "🕐 {:%H:%M}",
+        "format": "{:%H:%M}",
         "interval": 60,
         "tooltip": true
     }

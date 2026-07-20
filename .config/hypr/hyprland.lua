@@ -313,11 +313,12 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- ============================================
 -- Скриншоты (исправлено)
 -- ============================================
+-- Print Screen → весь экран в буфер + сохранить
 -- Print Screen → весь экран
-hl.bind("Print", hl.dsp.exec_cmd("grim ~/Pics/screens/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"))
+hl.bind("Print", hl.dsp.exec_cmd("grim - | tee ~/Pics/screens/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy"))
 
--- Shift + Print Screen → выделенная область
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" ~/Pics/screens/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"))
+-- Shift + Print → выделенная область
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | tee ~/Pics/screens/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy"))
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------

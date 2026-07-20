@@ -40,7 +40,7 @@ window#waybar {
     color: #ffffff;
 }
 
-#language {
+#custom-language {
     background: #3a3a3a;
     padding: 0 12px;
     border-radius: 0;
@@ -55,9 +55,27 @@ window#waybar {
 #backlight,
 #battery,
 #pulseaudio,
+#custom-wifi,
 #network,
 #clock {
     padding: 0 8px;
+    color: #cccccc;
+}
+
+#battery {
+    padding: 0 8px;
+    color: #cccccc;
+}
+
+#battery.charging {
+    color: #cccccc;
+}
+
+#battery.discharging {
+    color: #cccccc;
+}
+
+#battery.critical {
     color: #cccccc;
 }
 
