@@ -21,7 +21,7 @@
 
     "custom/wifi": {
         "format": "📶",
-        "on-click": "nm-connection-editor",
+        "on-click": "kitty -e ~/.config/wifi-pick",
         "tooltip": true,
         "tooltip-format": "Нажми, чтобы открыть настройки Wi-Fi"
     },
