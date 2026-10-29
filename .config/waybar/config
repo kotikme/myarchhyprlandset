@@ -5,7 +5,19 @@
     "spacing": 4,
     "modules-left": ["hyprland/workspaces", "custom/language"],
     "modules-center": [],
-    "modules-right": ["cpu", "memory", "disk", "temperature", "backlight", "battery", "pulseaudio", "custom/wifi", "network", "clock"],
+    "modules-right": [
+        "custom/wallpaper",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature",
+        "backlight",
+        "battery",
+        "pulseaudio",
+        "custom/wifi",
+        "network",
+        "clock"
+    ],
 
     "hyprland/workspaces": {
         "format": "{name}",
@@ -19,26 +31,26 @@
         "tooltip": false
     },
 
-    "custom/wifi": {
-        "format": "📶",
-        "on-click": "kitty -e ~/.config/wifi-pick",
-        "tooltip": true,
-        "tooltip-format": "Нажми, чтобы открыть настройки Wi-Fi"
+    "custom/wallpaper": {
+        "format": "[WPPR]",
+        "on-click": "~/.config/waybar/scripts/wallpaper-picker.sh",
+        "tooltip": false
     },
 
-    "network": {
-        "format": "{essid}",
-        "format-disconnected": "❌ Offline",
-        "tooltip-format": "{ifname} {ipaddr}",
-        "interval": 5
+    "custom/wifi": {
+        "format": "📶",
+        "on-click": "kitty -e ~/.config/waybar/scripts/wifi-pick",
+        "tooltip": true,
+        "tooltip-format": "Нажми, чтобы выбрать Wi-Fi сеть"
     },
 
     "cpu": {
         "format": "CPU {usage}%",
         "interval": 2,
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "kitty -e ~/.config/waybar/scripts/cpu-menu.sh"
     },
-
+    
     "memory": {
         "format": "RAM {}%",
         "interval": 5,
@@ -66,19 +78,27 @@
     },
 
     "battery": {
-    "format": "🔋 {capacity}%",
-    "format-charging": "⚡ {capacity}%",
-    "format-full": "✅ {capacity}%",
-    "on-click": "kitty -e bash -c 'echo -e \"1) performance (макс. производительность, больше тепла)\\n2) balanced (сбалансированный)\\n3) powersave (экономия батареи, медленнее)\\n4) current (показать текущий)\\nВыбери режим (1-4): \"; read choice; case $choice in 1) tuned-adm profile performance ;; 2) tuned-adm profile balanced ;; 3) tuned-adm profile powersave ;; 4) tuned-adm active ;; esac; echo -e \"\\nНажми Enter для выхода\"; read'",
-    "tooltip": true,
-    "tooltip-format": "🔋 ЛКМ: выбрать режим питания\n• performance — макс. мощность (игры/работа)\n• balanced — сбалансированный\n• powersave — экономия заряда"
+        "format": "🔋 {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-full": "🔌 {capacity}%",
+        "interval": 30,
+        "tooltip": true,
+        "tooltip-format": "🔋 {capacity}%\nОсталось: {time}",
+        "on-click": "kitty -e ~/.config/waybar/scripts/battery-menu.sh"
     },
-    
+
     "pulseaudio": {
         "format": "🔊 {volume}%",
         "format-muted": "🔇 MUTE",
         "on-click": "pavucontrol",
         "tooltip": true
+    },
+
+    "network": {
+        "format": "{essid}",
+        "format-disconnected": "❌ Offline",
+        "tooltip-format": "{ifname} {ipaddr}",
+        "interval": 5
     },
 
     "clock": {
