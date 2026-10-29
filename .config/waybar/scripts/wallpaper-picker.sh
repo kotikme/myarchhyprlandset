@@ -1,6 +1,7 @@
 #!/bin/bash
 
 WALLPAPER_DIR="$HOME/Pics/wallpapers"
+CONFIG_FILE="$HOME/.config/hypr/hyprpaper.conf"
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
     notify-send "Ошибка" "Папка $WALLPAPER_DIR не найдена"
@@ -15,7 +16,24 @@ fi
 
 FULL_PATH="$WALLPAPER_DIR/$SELECTED"
 
-# Отправляем команду в hyprpaper с пустым монитором (все мониторы)
+# 1. Меняем обои "на лету"
 hyprctl hyprpaper wallpaper ",$FULL_PATH"
+
+# 2. Обновляем конфиг под блочный формат
+# Удаляем старый блок wallpaper { ... }
+awk '
+    /^wallpaper[[:space:]]*\{/ { in_block=1; next }
+    in_block && /^\}/ { in_block=0; next }
+    !in_block { print }
+' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
+
+# 3. Добавляем новый блок в конец
+cat >> "$CONFIG_FILE" <<EOF
+
+wallpaper {
+    monitor = 
+    path = $FULL_PATH
+}
+EOF
 
 notify-send "Обои изменены" "$SELECTED"
