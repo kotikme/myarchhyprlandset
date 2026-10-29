@@ -12,7 +12,7 @@ sudo pacman -S git
 git clone https://github.com/kotikme/myarchhyprlandset.git ~/dotfiles
 ```
 
-# 3. Скопируй конфиги в нужные места (с заменой)
+# 3. Скопируй конфиги в нужные места (с заменой) и создай директории для работы элементов окружения
 ```
 cp -r ~/dotfiles/.config/* ~/.config/
 cp ~/dotfiles/.bashrc ~/ 2>/dev/null || true
