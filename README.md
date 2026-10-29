@@ -1,5 +1,6 @@
 Скрин
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b35f2ee9-5ed8-4d68-aefc-005aa0383b12" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c39ab358-c8f9-4a4c-93e9-54565c919d5e" />
+
 
 # 1. Убедись, что у тебя есть git
 ```
@@ -16,7 +17,7 @@ git clone https://github.com/kotikme/myarchhyprlandset.git ~/dotfiles
 cp -r ~/dotfiles/.config/* ~/.config/
 cp ~/dotfiles/.bashrc ~/ 2>/dev/null || true
 mkdir -p ~/Pics/wallpapers
-
+mkdir -p ~/Pics/screens
 ```
 Не забудьте дать скриптам право на исполнение: `chmod +x ~/.config/waybar/scripts/*`
 # 4. Установи необходимые пакеты
