@@ -15,8 +15,10 @@ git clone https://github.com/kotikme/myarchhyprlandset.git ~/dotfiles
 ```
 cp -r ~/dotfiles/.config/* ~/.config/
 cp ~/dotfiles/.bashrc ~/ 2>/dev/null || true
+mkdir -p ~/Pics/wallpapers
+
 ```
-Не забудьте дать скриптам право на исполнение: `chmod +x "путь до скрипта"`
+Не забудьте дать скриптам право на исполнение: `chmod +x ~/.config/waybar/scripts/*`
 # 4. Установи необходимые пакеты
 ```
 sudo pacman -S hyprland waybar kitty wofi hyprpaper brightnessctl networkmanager dunst hyprpolkitagent grim slurp jq fastfetch
